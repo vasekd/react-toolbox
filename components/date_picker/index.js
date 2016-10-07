@@ -16,7 +16,6 @@ const DatePickerDialog = datePickerDialogFactory(Dialog, Calendar);
 const DatePicker = datePickerFactory(Input, DatePickerDialog);
 
 const ThemedDatePicker = themr(DATE_PICKER, theme)(DatePicker);
-export default ThemedDatePicker;
 export { ThemedDatePicker as DatePicker };
 
 const ThemedDatePickerDialog = themr(DIALOG, theme)(DatePickerDialog);
