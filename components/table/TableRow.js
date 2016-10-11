@@ -75,7 +75,7 @@ const factory = (Checkbox) => {
       const index = this.props.index;
       const inputType = utils.inputTypeForPrototype(this.props.model[key].type);
       const inputValue = utils.prepareValueForInput(value, inputType);
-      const checked = inputType === 'checkbox' && value ? true : null;
+      const checked = inputType === 'checkbox' && value ? true : false;
 
       if (inputType === 'text') {
         return (
