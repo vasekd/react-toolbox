@@ -55,7 +55,7 @@ class Tab extends Component {
       onActive, // eslint-disable-line
       active, activeClassName, className, disabled, hidden, label, icon, closeIcon, theme, ...other
     } = this.props;
-    const _className = classnames(theme.label, {
+    const _classNameCont = classnames(theme.tabContainer, {
       [theme.active]: active,
       [theme.hidden]: hidden,
       [theme.withText]: label,
@@ -64,12 +64,28 @@ class Tab extends Component {
       [activeClassName]: active
     }, className);
 
+    const _className = classnames(theme.label, {
+      [theme.active]: active,
+      [theme.hidden]: hidden,
+      [theme.withText]: label,
+      [theme.withIcon]: icon,
+      [theme.withCloseIcon]: closeIcon,
+      [theme.disabled]: disabled,
+      [activeClassName]: active
+    }, className);
+
     return (
-      <label {...other} data-react-toolbox='tab' className={_className} onClick={this.handleClick}>
+    <div data-react-toolbox='tab' className={_classNameCont}>
+      <label {...other} className={_className} onClick={this.handleClick}>
         {icon && <FontIcon className={theme.icon} value={icon}/>}
         {label}
-        {closeIcon && <FontIcon className={theme.closeIcon} onClick={this.handleCloseClick} value={closeIcon}/>}
       </label>
+      {closeIcon && 
+        <div className={theme.closeIcon} onClick={this.handleCloseClick}>
+          <FontIcon value={closeIcon}/>
+      </div>
+      }
+    </div>
     );
   }
 }

@@ -36,6 +36,18 @@
   box-shadow: inset 0 -1px $tab-navigation-border-color;
 }
 
+.tabContainer {
+  transition-timing-function: $animation-curve-default;
+  transition-duration: $animation-duration;
+  transition-property: box-shadow, color;
+  display: flex;
+  flex-direction: row;
+
+  &.hidden {
+    display: none;
+  }
+}
+
 .label {
   padding: $tab-label-v-padding $tab-label-h-padding;
   font-size: $tab-text-height;
@@ -69,11 +81,23 @@
     padding-bottom: ($tab-label-v-padding - $tab-icon-margin-bottom / 2);
   }
 
+  &.withCloseIcon {
+    padding-right: ($tab-label-v-padding / 5);
+  }
+
   &.withText {
     .icon {
       margin-bottom: $tab-icon-margin-bottom;
     }
   }
+}
+
+.closeIcon {
+  cursor: pointer;
+  margin-top: $tab-closeicon-v-padding;
+  display: block;
+  height: $tab-closeicon-height;
+  line-height: $tab-closeicon-height;
 }
 
 .icon {
