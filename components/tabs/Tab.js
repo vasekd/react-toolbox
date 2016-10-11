@@ -12,9 +12,11 @@ class Tab extends Component {
     disabled: PropTypes.bool,
     hidden: PropTypes.bool,
     icon: PropTypes.node,
+    closeIcon: PropTypes.node,
     label: PropTypes.node,
     onActive: PropTypes.func,
     onClick: PropTypes.func,
+    onCloseClick: PropTypes.func,
     theme: PropTypes.shape({
       active: PropTypes.string,
       disabled: PropTypes.string,
@@ -43,11 +45,15 @@ class Tab extends Component {
       this.props.onClick(event);
     }
   };
-
+  handleCloseClick = (event) => {
+    if (!this.props.disabled && this.props.onCloseClick) {
+      this.props.onCloseClick(event);
+    }
+  };
   render () {
     const {
       onActive, // eslint-disable-line
-      active, activeClassName, className, disabled, hidden, label, icon, theme, ...other
+      active, activeClassName, className, disabled, hidden, label, icon, closeIcon, theme, ...other
     } = this.props;
     const _className = classnames(theme.label, {
       [theme.active]: active,
@@ -62,6 +68,7 @@ class Tab extends Component {
       <label {...other} data-react-toolbox='tab' className={_className} onClick={this.handleClick}>
         {icon && <FontIcon className={theme.icon} value={icon}/>}
         {label}
+        {closeIcon && <FontIcon className={theme.closeIcon} onClick={this.handleCloseClick} value={closeIcon}/>}
       </label>
     );
   }
