@@ -53,7 +53,7 @@ class Tab extends Component {
   render () {
     const {
       onActive, // eslint-disable-line
-      active, activeClassName, className, disabled, hidden, label, icon, closeIcon, theme, ...other
+      active, activeClassName, className, disabled, hidden, label, icon, closeIcon, theme, onCloseClick, ...other
     } = this.props;
     const _classNameCont = classnames(theme.tabContainer, {
       [theme.active]: active,
