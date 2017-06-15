@@ -47,8 +47,10 @@ const factory = (Tab, TabContent, FontIcon) => {
       this.handleResize();
     }
 
-    componentWillReceiveProps (nextProps) {
-      this.updatePointer(nextProps.index);
+    componentDidUpdate (nextProps) {
+      if (nextProps.index !== this.props.index){
+        this.handleResize();
+      }
     }
 
     componentWillUnmount () {
