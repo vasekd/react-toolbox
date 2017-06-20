@@ -90,6 +90,7 @@ const factory = (Checkbox) => {
 
       return (
         <input
+          dir={'ltr'}
           checked={checked}
           onChange={this.handleInputChange.bind(null, index, key, inputType)}
           type={inputType}
