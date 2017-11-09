@@ -17,6 +17,7 @@ const factory = (Tab, TabContent, FontIcon) => {
       index: PropTypes.number,
       inverse: PropTypes.bool,
       onChange: PropTypes.func,
+      updateResizer: PropTypes.bool,
       theme: PropTypes.shape({
         arrow: PropTypes.string,
         arrowContainer: PropTypes.string,
@@ -48,6 +49,9 @@ const factory = (Tab, TabContent, FontIcon) => {
     }
 
     componentDidUpdate (nextProps) {
+      if (this.props.updateResizer) {
+        this.handleResize();
+      }
       if (nextProps.index !== this.props.index){
         this.handleResize();
       }
