@@ -18,6 +18,7 @@ const factory = (Tab, TabContent, FontIcon) => {
       inverse: PropTypes.bool,
       onChange: PropTypes.func,
       updateResizer: PropTypes.bool,
+      noArrows: PropTypes.bool,
       theme: PropTypes.shape({
         arrow: PropTypes.string,
         arrowContainer: PropTypes.string,
@@ -35,6 +36,7 @@ const factory = (Tab, TabContent, FontIcon) => {
       index: 0,
       fixed: false,
       inverse: false,
+      noArrows: false,
       hideMode: 'unmounted'
     };
 
@@ -71,7 +73,9 @@ const factory = (Tab, TabContent, FontIcon) => {
       if (this.resizeTimeout) clearTimeout(this.resizeTimeout);
       this.resizeTimeout = setTimeout(() => {
         this.updatePointer(this.props.index);
-        this.updateArrows();
+        if (!this.props.noArrows) {
+          this.updateArrows();
+        }
       }, 100);
     };
 
