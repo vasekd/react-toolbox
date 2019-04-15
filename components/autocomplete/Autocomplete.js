@@ -22,8 +22,8 @@ const factory = (Chip, Input) => {
      direction: PropTypes.oneOf(['auto', 'up', 'down']),
      disabled: PropTypes.bool,
      error: PropTypes.oneOfType([
-       PropTypes.string,
-       PropTypes.node
+      PropTypes.string,
+      PropTypes.node
      ]),
      keepFocusOnChange: PropTypes.bool,
      label: PropTypes.oneOfType([
